@@ -1,0 +1,20 @@
+{
+  "name": "chatroom-server",
+  "version": "0.0.1",
+  "description": "chatroom server",
+  "main": "index.js",
+  "scripts": {
+    "electron:start": "electron ./"
+  },
+  "dependencies": {
+    "better-sqlite3": "^4.1.4",
+    "microtime": "^2.1.8"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "chatroom-server",
+    "electron"
+  ],
+  "author": "",
+  "license": "ISC"
+}

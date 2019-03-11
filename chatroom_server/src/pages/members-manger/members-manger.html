@@ -1,0 +1,79 @@
+<!--
+  Generated template for the MembersMangerPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons end>
+      <button ion-button (click)="close()">
+        Close
+      </button>
+    </ion-buttons>
+    <ion-title>成员管理</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div>
+    <ion-segment [(ngModel)]="membersType">
+      <ion-segment-button value='joined'>
+        已加入成员
+      </ion-segment-button>
+      <ion-segment-button *ngIf='needApproval' value='waiting'>
+        待批准成员
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  <table class="member-table">
+    <tr>
+      <th>用户公钥</th>
+      <th *ngIf="membersType == 'joined'">加入时间</th>
+      <th *ngIf="membersType == 'waiting'">申请理由</th>
+      <th>管理操作</th>
+    </tr>
+  </table>
+  <div [ngSwitch]="membersType">
+    <div *ngSwitchCase="'joined'">
+      <div class="member-table-content">
+        <table class="member-table">
+          <tr *ngFor="let item of joinedUsersList;">
+            <td [attr.title]='item.public_key'>{{ item.public_key.substring(0,20) }}...</td>
+            <td>{{ item.approve_time }}</td>
+            <td>
+              <button ion-button small color="dark" (click)="blackListHandle(item)">
+                {{ item.is_blackList ? '取消黑名单' : '加入黑名单'}}
+              </button>
+              <button ion-button small color="light" (click)="whiteListHandle(item)">
+                {{ item.is_whiteList ? '取消白名单' : '加入白名单'}}
+              </button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div *ngSwitchCase="'waiting'">
+      <div class="member-table-content">
+        <table class="member-table">
+          <tr *ngFor="let item of waitingUserList;">
+            <td [attr.title]='item.public_key'>{{ item.public_key.substring(0,20) }}...</td>
+            <td [attr.title]='item.application_reason'>
+              {{ item.application_reason ? item.application_reason.substring(0,20) : "-" }}
+            </td>
+            <td>
+              <button ion-button small (click)="approvedJoin(item)">
+                同意加入
+              </button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</ion-content>

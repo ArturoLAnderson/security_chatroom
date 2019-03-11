@@ -1,0 +1,57 @@
+<div *ngIf="!appService.isLoggedIn" class="app-root" style="z-index: 1; background: #fff; padding-top: 30%; padding: 30% 30px 0 20px;">
+
+  <div *ngIf="appService.signMode=='signin'" class="sign-mod">
+    <ion-item>
+      <ion-label floating>用户名</ion-label>
+      <ion-input readonly type="text" [(ngModel)]="signInForm.nickname"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>公钥</ion-label>
+      <ion-input readonly type="text" [(ngModel)]="signInForm.publicKey"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>密码</ion-label>
+      <ion-input type="password" [(ngModel)]="signInForm.password" (keyup.enter)="signIn()"></ion-input>
+    </ion-item>
+
+    <div padding>
+      <button ion-button color="primary" block (click)="signIn()">登录</button>
+    </div>
+
+    <div style="text-align: right;">
+      <button ion-button clear icon-end color="primary" (click)="switchSignMode('signup')">
+        注册
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="appService.signMode=='signup'" class="sign-mod">
+    <form>
+      <ion-item>
+        <ion-label floating>用户名</ion-label>
+        <ion-input type="text" [(ngModel)]="signUpForm.nickname" name="nickname"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>密码</ion-label>
+        <ion-input type="password" [(ngModel)]="signUpForm.password" name="password"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>再输入一次密码</ion-label>
+        <ion-input type="password" [(ngModel)]="signUpForm.password2" name="password2" (keyup.enter)="signUp()"></ion-input>
+      </ion-item>
+
+      <div padding>
+        <button ion-button color="primary" block (click)="signUp()">注册</button>
+      </div>
+
+      <div style="text-align: right;">
+        <button ion-button clear icon-end color="primary" (click)="switchSignMode('signin')">
+          登录
+        </button>
+      </div>
+    </form>
+  </div>
+
+</div>

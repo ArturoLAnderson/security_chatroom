@@ -1,0 +1,5 @@
+.platform-mobile .uic-header {
+  position: fixed;
+  background: #fff;
+  z-index: 1000;
+}

@@ -1,0 +1,16 @@
+page-members-manger {
+  .member-table {
+    margin-top: 5px;
+    width: 100%;
+    text-align: center;
+    td {
+      width: 33.33%;
+    }
+  }
+
+  .member-table-content {
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 600px;
+  }
+}

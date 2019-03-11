@@ -1,0 +1,56 @@
+.uic-preview-wrapper .image-preview__btn {
+  position: absolute;
+  font-size: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px 0px;
+}
+
+.uic-preview-wrapper .image-preview__btn:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.uic-preview-wrapper .image-preview__btn .iconfont {
+  font-size: 40px;
+  color: #fff;
+}
+
+.uic-preview-wrapper .btn--prev-image {
+  left: 10px;
+}
+
+.uic-preview-wrapper .btn--next-image {
+  right: 10px;
+}
+
+.image-preview__item {
+  position: relative;
+}
+
+.image-preview__item .item__load {
+  position: absolute;
+  top: 0;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-preview__item .item__load .inner {
+  display: flex;
+  background: rgba(0, 0, 0, 0.5);
+  width: 32px;
+  height: 32px;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-preview__title {
+  position: absolute;
+  top: 40px;
+  color: #fff;
+  font-size: 20px;
+}

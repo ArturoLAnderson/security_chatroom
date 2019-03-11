@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>聊天室服务端</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+
+    <ion-item (click)="showModifyTitleModal()">
+      聊天室名称
+      <ion-note item-end>
+        {{ appService.roomTitle }}
+      </ion-note>
+    </ion-item>
+
+    <ion-item (click)="showMembersManager()">
+      成员管理
+      <ion-note item-end>
+        当前在线 {{ appService.onlineMembers.length }}
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-label title="新加入成员需要通过您的批准后方可加入聊天室">批准后加入</ion-label>
+      <ion-toggle [(ngModel)]="needApproval" (ionChange)="modifyNeedApproval()" item-end></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>聊天室地址</ion-label>
+      <ion-input readonly="true" type="url" [(ngModel)]="appService.roomUrl"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <div class="qrcode--client-url">
+        <img src="{{ appService.qrCodeRoomUrl }}">
+      </div>
+    </ion-item>
+
+    <button ion-button class="copy-btn" attr.data-clipboard-text="{{ appService.roomUrl }}">复制聊天室地址</button>
+    <button ion-button class="logout-btn" (click)="appService.logout()">退出</button>
+
+  </ion-list>
+</ion-content>
